@@ -1,9 +1,3 @@
-"""`create()`: resuelve callbacks y persiste a través de la sesión.
-
-Aquí la sesión es un mock: comprobamos el *contrato de interacción* de la
-factory (qué le pide a la sesión), no que la base de datos haga su trabajo.
-"""
-
 from types import SimpleNamespace
 from unittest.mock import patch
 

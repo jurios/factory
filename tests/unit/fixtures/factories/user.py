@@ -7,8 +7,6 @@ from tests.unit.fixtures.models.user import User
 
 
 class UserFactory(BaseFactory[User]):
-    """Factory "simple": solo valores estáticos, sin callbacks."""
-
     model = User
 
     @classmethod

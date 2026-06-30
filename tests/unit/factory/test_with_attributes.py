@@ -1,5 +1,3 @@
-"""`with_attributes()`: API inmutable que deriva nuevas factories."""
-
 from tests.unit.fixtures.factories.user import UserFactory
 
 

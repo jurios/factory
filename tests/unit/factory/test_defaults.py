@@ -1,5 +1,3 @@
-"""Contrato de la clase base."""
-
 import pytest
 from faker import Faker
 
