@@ -21,8 +21,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/workspaces/factory:cached
-    ports:
-      - "8000:8000"
 
 volumes:
   postgres_data:
+

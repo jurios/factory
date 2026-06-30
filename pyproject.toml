@@ -7,8 +7,38 @@ authors = [
     { name = "Jordi Urios", email = "jordi@kodilab.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "faker>=40.25.0",
+    "sqlmodel>=0.0.39",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.26,<0.12.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.15.20",
+]
+
+[tool.ruff]
+target-version = "py312"
+exclude = ["alembic"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort/imports
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "ARG001", # unused arguments in functions
+    "T201",   # print statements are not allowed
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
