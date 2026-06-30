@@ -1,20 +1,4 @@
 services:
-  db:
-    image: postgres:18
-    environment:
-      POSTGRES_DB: factory
-      POSTGRES_USER: factory
-      POSTGRES_PASSWORD: factory
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U factory -d factory"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
   app:
     build:
       context: .

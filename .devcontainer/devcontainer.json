@@ -3,8 +3,7 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "app",
   "runServices": [
-    "app",
-    "db"
+    "app"
   ],
   "overrideCommand": true,
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
