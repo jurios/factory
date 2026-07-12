@@ -33,3 +33,8 @@ class TestMake:
         profile = ProfileFactory().with_attributes(token="manual").make()
 
         assert profile.token == "manual"
+
+    def test_callback_override_becomes_none(self):
+        profile = ProfileFactory().with_attributes(token=lambda: "x").make()
+
+        assert profile.token is None

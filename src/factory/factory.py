@@ -96,7 +96,7 @@ class BaseFactory[Model]:
         session: Session | None,
         resolve_callbacks: bool,
     ) -> Model:
-        data = self.defaults(self.faker)
+        data = {**self.defaults(self.faker), **self._overrides}
 
         for key, value in data.items():
             if callable(value):
@@ -105,8 +105,6 @@ class BaseFactory[Model]:
                     if resolve_callbacks
                     else None
                 )
-
-        data.update(self._overrides)
 
         return self.model(**data)
 

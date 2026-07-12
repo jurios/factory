@@ -39,3 +39,24 @@ class TestCreate:
         profile = ProfileFactory().with_attributes(token="manual").create(session)
 
         assert profile.token == "manual"
+
+    def test_resolves_callback_override(self, session):
+        profile = (
+            ProfileFactory()
+            .with_attributes(token=lambda: "overridden-token")
+            .create(session)
+        )
+
+        assert profile.token == "overridden-token"
+
+    def test_passes_session_to_callback_override(self, session):
+        received = {}
+
+        def capture(session):
+            received["session"] = session
+            return "value-from-override"
+
+        profile = ProfileFactory().with_attributes(token=capture).create(session)
+
+        assert received["session"] is session
+        assert profile.token == "value-from-override"
