@@ -26,6 +26,13 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "faker" },
+]
+
+[package.optional-dependencies]
+sqlalchemy = [
+    { name = "sqlalchemy" },
+]
+sqlmodel = [
     { name = "sqlmodel" },
 ]
 
@@ -33,18 +40,24 @@ dependencies = [
 dev = [
     { name = "pytest" },
     { name = "ruff" },
+    { name = "sqlalchemy" },
+    { name = "sqlmodel" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "faker", specifier = ">=40.25.0" },
-    { name = "sqlmodel", specifier = ">=0.0.39" },
+    { name = "sqlalchemy", marker = "extra == 'sqlalchemy'", specifier = ">=2.0" },
+    { name = "sqlmodel", marker = "extra == 'sqlmodel'", specifier = ">=0.0.39" },
 ]
+provides-extras = ["sqlmodel", "sqlalchemy"]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "ruff", specifier = ">=0.15.20" },
+    { name = "sqlalchemy", specifier = ">=2.0" },
+    { name = "sqlmodel", specifier = ">=0.0.39" },
 ]
 
 [[package]]
