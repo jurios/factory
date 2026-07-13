@@ -23,7 +23,7 @@ Unit-of-Work API — without importing either.
 
 ## Requirements
 
-- Python **3.14+**
+- Python **3.12+**
 - One ORM backend of your choice (SQLModel or SQLAlchemy) if you intend to persist with `create()`.
 
 ## Installation
