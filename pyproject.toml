@@ -1,7 +1,7 @@
 [project]
 name = "factory"
 version = "0.1.0"
-description = "Add your description here"
+description = "A tiny, typed model factory for generating and persisting test data"
 readme = "README.md"
 authors = [
     { name = "Jordi Urios", email = "jordi@kodilab.com" }
