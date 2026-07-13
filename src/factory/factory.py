@@ -3,7 +3,8 @@ from inspect import signature
 from typing import Any, TypeVar, overload
 
 from faker import Faker
-from sqlmodel import Session
+
+from factory.persister import Persister
 
 faker = Faker()
 
@@ -38,14 +39,14 @@ class BaseFactory[Model]:
         ]
 
     @overload
-    def create(self, session: Session, count: None = None) -> Model: ...
+    def create(self, session: Persister, count: None = None) -> Model: ...
 
     @overload
-    def create(self, session: Session, *, count: int) -> list[Model]: ...
+    def create(self, session: Persister, *, count: int) -> list[Model]: ...
 
     def create(
         self,
-        session: Session,
+        session: Persister,
         *,
         count: int | None = None,
     ) -> Model | list[Model]:
@@ -93,7 +94,7 @@ class BaseFactory[Model]:
     def _build_one(
         self,
         *,
-        session: Session | None,
+        session: Persister | None,
         resolve_callbacks: bool,
     ) -> Model:
         data = {**self.defaults(self.faker), **self._overrides}
@@ -111,7 +112,7 @@ class BaseFactory[Model]:
     def _resolve_callback(
         self,
         callback: Callable[..., Any],
-        session: Session | None,
+        session: Persister | None,
     ) -> Any:
         params = signature(callback).parameters
 
